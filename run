@@ -1,11 +1,13 @@
 #!/bin/bash
 if [[ $1 = "start" ]]; then
     docker-compose up -d
-else 
-    if [[ $1 = getpwd]]; then 
+else
+    if [[ $1 = "getpwd" ]]; then
 	docker exec jenkins-master cat /var/jenkins_home/secrets/initialAdminPassword
     else
         echo "Command should look like this: \n\n\t./run start\n\nor like this \n\n\t./run getpwd\n"
     fi
 fi
+
+# cb7f4e07cdc34b7aa21a1d90a8effce7
 

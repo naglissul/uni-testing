@@ -25,7 +25,6 @@ public class Lab3OrAsCalledTask4OrAsCalledPart4 {
     
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Naglis\\OneDrive\\CURR_STUFF\\mifas\\testoing\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
