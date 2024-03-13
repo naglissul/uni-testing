@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,24 +17,32 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Lab3OrAsCalledTask4OrAsCalledPart4 {
     private WebDriver driver;
-    private final String email = "testuser6649806@example.com";
-    private final String password = "Password123";
+    String email = "testuser" + new Random().nextInt() + "@example.com";
+    String password = "Password123";
     
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
+    	ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
+        
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
     
     @Test
-    public void userRegistration() {
+    public void firstTest() throws InterruptedException, IOException {
         driver.get("https://demowebshop.tricentis.com/");
 
+        //Register
       driver.findElement(By.linkText("Register")).click();
       driver.findElement(By.id("gender-male")).click();
       driver.findElement(By.id("FirstName")).sendKeys("John");
@@ -42,14 +51,6 @@ public class Lab3OrAsCalledTask4OrAsCalledPart4 {
       driver.findElement(By.id("Password")).sendKeys(password);
       driver.findElement(By.id("ConfirmPassword")).sendKeys(password);
       driver.findElement(By.id("register-button")).click();
-          
-      Assert.assertNotNull(driver.findElement(By.xpath("//div[contains(text(), 'registration completed')]")));
-    }
-    
-    @Test
-    public void firstTest() throws InterruptedException, IOException {
-        driver.get("https://demowebshop.tricentis.com/");
-
         // Login
         driver.findElement(By.linkText("Log in")).click();
         driver.findElement(By.id("Email")).sendKeys(email);

@@ -25,7 +25,12 @@ public class Lab2Part2 {
 		driver.manage().window().maximize();
 		driver.get("https://demoqa.com/");
 		//Web element find
+		driver.executeScript("window.scrollBy(0,100)", "");
+//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h5[text()='Elements']")));
+		
 		driver.findElement(By.xpath("//h5[text()='Elements']")).click();
+		//driver.executeScript("document.body.style.zoom = '50%'");
+
 		driver.findElement(By.xpath("//span[text()='Web Tables']")).click();
 
 		while (driver.findElement(By.xpath("//span[@class='-totalPages']")).getText().equals("1")) {
@@ -42,11 +47,13 @@ public class Lab2Part2 {
 	        // Submit the form
 	       
 	        driver.findElement(By.id("submit")).click();
-	        
+
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='-totalPages']")));
 		}
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='-btn' and text()='Next']")));
         driver.executeScript("arguments[0].click();", driver.findElement(By.xpath("//button[text()='Next']")));
+		driver.executeScript("window.scrollBy(0,100)", "");
+
 		driver.findElement(By.xpath("//span[@id='delete-record-11']")).click();
 		System.out.println(driver.findElement(By.xpath("//input[@aria-label='jump to page']")).getAttribute("value").equals("1"));
 		System.out.println(driver.findElement(By.xpath("//span[@class='-totalPages']")).getText().equals("1"));

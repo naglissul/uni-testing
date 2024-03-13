@@ -24,7 +24,12 @@ public class Lab2Part1 {
 		driver.manage().window().maximize();
 		driver.get("https://demoqa.com/");
 		//Web element find
+		
+		//scroll
+		//		driver.findElement(By.xpath("//div[contains(@class, 'top-card')/node()[. ='Widgets']")).click();
+		driver.executeScript("window.scrollBy(0,1000)", "");
 		driver.findElement(By.xpath("//h5[text()='Widgets']")).click();
+		
 		driver.findElement(By.xpath("//span[text()='Progress Bar']")).click();
 		driver.findElement(By.xpath("//button[@id='startStopButton' and text()='Start']")).click();
 		
@@ -33,6 +38,7 @@ public class Lab2Part1 {
 		driver.findElement(By.xpath("//button[@id='resetButton']")).click();
 		driver.findElement(By.xpath("//div[text()='0%' and @role='progressbar']"));
 		System.out.println("Found bar with 0%");
-		driver.close();
+		
+		driver.quit();
 	}
 }
