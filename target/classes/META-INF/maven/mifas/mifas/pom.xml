@@ -3,6 +3,19 @@
   <groupId>mifas</groupId>
   <artifactId>mifas</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+      <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- Use the latest version -->
+                <configuration>
+                    <source>11</source> <!-- Specify Java version for source compatibility -->
+                    <target>11</target> <!-- Specify Java version for target compatibility -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
   <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
