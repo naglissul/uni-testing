@@ -30,10 +30,10 @@ public class Lab3OrAsCalledTask4OrAsCalledPart4 {
                  email = "testuser" + new Random().nextInt() + "@example.com";
 
     	ChromeOptions options = new ChromeOptions();
-        // options.addArguments("--headless");
-        // options.addArguments("--disable-gpu");
-        // options.addArguments("--no-sandbox");
-        // options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
