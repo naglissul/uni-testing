@@ -22,24 +22,25 @@ import java.util.concurrent.TimeUnit;
 
 public class Lab3OrAsCalledTask4OrAsCalledPart4 {
     private WebDriver driver;
-    String email = "testuser" + new Random().nextInt() + "@example.com";
+        private String email;
     String password = "Password123";
     
     @Before
     public void setUp() {
+                 email = "testuser" + new Random().nextInt() + "@example.com";
+
     	ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
+        // options.addArguments("--headless");
+        // options.addArguments("--disable-gpu");
+        // options.addArguments("--no-sandbox");
+        // options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-    }
-    
-    @Test
-    public void firstTest() throws InterruptedException, IOException {
+
+        
+
         driver.get("https://demowebshop.tricentis.com/");
 
         //Register
@@ -51,11 +52,18 @@ public class Lab3OrAsCalledTask4OrAsCalledPart4 {
       driver.findElement(By.id("Password")).sendKeys(password);
       driver.findElement(By.id("ConfirmPassword")).sendKeys(password);
       driver.findElement(By.id("register-button")).click();
+              driver.findElement(By.linkText("Log out")).click();
+
         // Login
         driver.findElement(By.linkText("Log in")).click();
         driver.findElement(By.id("Email")).sendKeys(email);
         driver.findElement(By.id("Password")).sendKeys(password);
         driver.findElement(By.cssSelector("input[value='Log in']")).click();
+    }
+    
+    @Test
+    public void firstTest() throws InterruptedException, IOException {
+
         
         // Test execution
         addProductsToCart("data1.txt");
@@ -66,13 +74,6 @@ public class Lab3OrAsCalledTask4OrAsCalledPart4 {
     
     @Test
     public void secondTest() throws InterruptedException, IOException {
-        driver.get("https://demowebshop.tricentis.com/");
-
-        // Login
-        driver.findElement(By.linkText("Log in")).click();
-        driver.findElement(By.id("Email")).sendKeys(email);
-        driver.findElement(By.id("Password")).sendKeys(password);
-        driver.findElement(By.cssSelector("input[value='Log in']")).click();        
         // Test execution
         addProductsToCart("data2.txt");
         
