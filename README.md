@@ -64,3 +64,10 @@ docker exec -u root -it jenkins bash
 Sorry for this informal type of documentation. But this was a mess. And I don't want to spend much time on it, cuz I have other more important things/projects to do.
 
 P.S. when setting up chrome driver, pay attention to versions. Both chromedriver and chrome should have the same version (take a look here: [https://googlechromelabs.github.io/chrome-for-testing/#stable](https://googlechromelabs.github.io/chrome-for-testing/#stable))
+
+
+# 2024-04-21 LAB2 - postman API testing
+Added exported postman collections for task1 and task2.
+
+Collection can be run with newman (npm install -g newman)
+
